@@ -3,10 +3,8 @@
 package main
 
 import (
-	"fmt"
-	
+	"fmt"	
 	MQTT "github.com/eclipse/paho.mqtt.golang"
-	"os"
 	"time"
 	"regexp"
 	m "erps-test/msg"
@@ -85,89 +83,26 @@ func main() {
 		panic(token.Error())
 	}
 
-	if token := c.Subscribe("member/+/res/login", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("member/+/res/logout", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("member/+/res/choose_hero", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-
-	if token := c.Subscribe("room/+/res/create", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/close", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/start_queue", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/cancel_queue", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/invite", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/join", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/accept_join", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/kick", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/leave", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/prestart", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/start", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("room/+/res/start_get", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-
-	if token := c.Subscribe("game/+/res/game_signal", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("game/+/res/game_over", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("game/+/res/start_game", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("game/+/res/choose", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-	if token := c.Subscribe("game/+/res/exit", 0, nil); token.Wait() && token.Error() != nil {
-		fmt.Println(token.Error())
-		os.Exit(1)
-	}
-
+	c.Subscribe("member/+/res/login", 0, nil);
+	c.Subscribe("member/+/res/logout", 0, nil);
+	c.Subscribe("member/+/res/choose_hero", 0, nil);
+	c.Subscribe("room/+/res/create", 0, nil);
+	c.Subscribe("room/+/res/close", 0, nil);
+	c.Subscribe("room/+/res/start_queue", 0, nil);
+	c.Subscribe("room/+/res/cancel_queue", 0, nil); 
+	c.Subscribe("room/+/res/invite", 0, nil);
+	c.Subscribe("room/+/res/join", 0, nil);
+	c.Subscribe("room/+/res/accept_join", 0, nil);
+	c.Subscribe("room/+/res/kick", 0, nil);
+	c.Subscribe("room/+/res/leave", 0, nil);
+	c.Subscribe("room/+/res/prestart", 0, nil);
+	c.Subscribe("room/+/res/start", 0, nil);
+	c.Subscribe("room/+/res/start_get", 0, nil);
+	c.Subscribe("game/+/res/game_signal", 0, nil);
+	c.Subscribe("game/+/res/game_over", 0, nil);
+	c.Subscribe("game/+/res/start_game", 0, nil);
+	c.Subscribe("game/+/res/choose", 0, nil);
+	c.Subscribe("game/+/res/exit", 0, nil);
 
 //     mqtt_client.subscribe("member/+/res/login", QoS::AtLeastOnce).unwrap();
 //     mqtt_client.subscribe("member/+/res/logout", QoS::AtLeastOnce).unwrap();
@@ -256,17 +191,6 @@ func main() {
 	}
 	//}()
 	
-	//Publish 5 messages to /go-mqtt/sample at qos 1 and wait for the receipt
-	//from the server after sending each message
-	
-
-	
-
-	time.Sleep(3 * time.Second)
-
-	
-	//c.Disconnect(250)
-	
 }
 // fn main() -> std::result::Result<(), Error> {
 //     // configure logging
@@ -325,11 +249,6 @@ var restart, _ = regexp.Compile("(\\w+)/(\\w+)/res/start")
 var regame_signal, _ = regexp.Compile("(\\w+)/(\\w+)/res/game_signal")
 
 var f MQTT.MessageHandler = func(client MQTT.Client, msg MQTT.Message) {	
-	// handle mqtt message
-	//fmt.Printf("TOPIC: %s\n", msg.Topic())
-	//fmt.Printf("MSG: %s\n", msg.Payload())
-
-	
 
 	if (relogin.MatchString(msg.Topic())) {		
 		substr := relogin.FindStringSubmatch(msg.Topic())[2]
