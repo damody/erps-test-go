@@ -7,8 +7,8 @@ import (
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 	"time"
 	"regexp"
-	m "erps-test/msg"
-	e "erps-test/event"
+	m "erps-test-go/msg"
+	e "erps-test-go/event"
 )
 
 

@@ -6,8 +6,8 @@ package event
 	"encoding/json"
 	"time"
 	"strings"
- 	m "erps-test/msg"
- 	u "erps-test/user"
+ 	m "erps-test-go/msg"
+ 	u "erps-test-go/user"
  )
 
 type LoginRes struct {

@@ -4,7 +4,7 @@ import (
 	//"fmt"
 	"math/rand"
 	"time"
-	m "erps-test/msg"
+	m "erps-test-go/msg"
 )
 
 type RoomRecord struct {
